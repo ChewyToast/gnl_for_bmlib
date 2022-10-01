@@ -5,84 +5,97 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/15 11:47:39 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/15 11:47:40 by bmoll-pe         ###   ########.fr       */
+/*   Created: 2022/06/15 11:47:32 by bmoll-pe          #+#    #+#             */
+/*   Updated: 2022/06/15 11:47:33 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "get_next_line.h"
 
-char	*ft_strjoin(char *total_buff, char *tmp, size_t totalln, size_t tmpln)
+char	*ft_strjoinn(char *total_buff, char *tmp)
 {
 	char	*str;
-	size_t	indx;
+	size_t	i;
+	size_t	total_size;
+	size_t	tmp_size;
 
-	indx = 0;
+	i = 0;
 	if (!total_buff)
 	{
-		total_buff = malloc(sizeof(char *) * 1);
+		total_buff = nter_malloc(0, 1);
 		if (!total_buff)
 			return (NULL);
-		*total_buff = '\0';
 	}
-	str = malloc(sizeof(char) * (totalln + tmpln + 1));
+	total_size = ft_strlenne(total_buff);
+	tmp_size = ft_strlenne(tmp);
+	str = nter_malloc(total_size + tmp_size + 1, 1);
 	if (!str)
 		return (NULL);
-	while (indx++ < totalln)
-		str[indx - 1] = total_buff[indx - 1];
-	indx = 0;
-	while (indx++ < tmpln)
-		str[totalln + indx - 1] = tmp[indx - 1];
-	str[totalln + indx - 1] = '\0';
+	while (i++ < total_size)
+		str[i - 1] = total_buff[i - 1];
+	i = 0;
+	while (i++ < tmp_size)
+		str[total_size + i - 1] = tmp[i - 1];
+	str[total_size + i - 1] = '\0';
 	free(total_buff);
 	return (str);
 }
 
-char	*ft_substr(char *total_buff, size_t start, size_t len)
+char	*ft_substrr(const char *total_buff, unsigned int start, size_t len)
 {
 	char	*str;
-	size_t	indx;
+	size_t	count;
+	size_t	len_src;
 
-	indx = 0;
-	if (ft_strlen(total_buff) < start)
-		str = malloc(sizeof(char) * 1);
-	else if (ft_strlen(total_buff) - start < len)
-		str = malloc(sizeof(char) * (ft_strlen(total_buff) - start + 1));
-	else
-		str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!total_buff)
+		return (NULL);
+	len_src = ft_strlenne(total_buff);
+	if (len_src < start)
+		start = len_src;
+	if (len_src - start < len)
+		len = len_src - start;
+	str = (char *)nter_malloc(sizeof(char), len);
 	if (!str)
 		return (NULL);
-	while (start + indx < ft_strlen(total_buff) && indx < len)
+	count = 0;
+	while (start + count < len_src && count < len)
 	{
-		str[indx] = total_buff[start + indx];
-		indx++;
+		str[count] = total_buff[start + count];
+		count++;
 	}
-	str[indx] = '\0';
+	str[count] = '\0';
 	return (str);
 }
 
-size_t	check_nl(const char *str)
+char	*check_char(const char *str, int c)
+{
+	if (!str)
+		return (NULL);
+	while (*str != '\0')
+	{
+		if (*str == (char)c)
+			return ((char *)str);
+		str++;
+	}
+	return (NULL);
+}
+
+size_t	ft_strlenne(const char *str)
 {
 	size_t	size;
 
 	size = 0;
-	if (!str)
-		return (0);
-	while (str[size] && str[size] != '\n')
+	while (str[size] != '\0')
 		size++;
-	if (!str[size])
-		return (0);
 	return (size);
 }
 
-size_t	ft_strlen(const char *s)
+char	*nter_malloc(size_t nbytes, size_t size)
 {
-	size_t	size;
+	char	*str;
 
-	size = 0;
-	if (!s)
-		return (0);
-	while (s[size] != '\0')
-		size++;
-	return (size);
+	str = malloc(sizeof(char) * (nbytes * size) + 1);
+	if (!str)
+		return (NULL);
+	str[0] = '\0';
+	return (str);
 }

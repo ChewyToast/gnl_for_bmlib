@@ -9,7 +9,6 @@
 /*   Updated: 2022/07/01 11:07:18 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "get_next_line_bonus.h"
 
 char	*get_next_line(const int fd)
@@ -50,8 +49,8 @@ char	*ft_read(const int fd, char *total_buff)
 		if (chk > 0)
 		{
 			tmp[chk] = '\0';
-			total_buff = ft_strjoin(total_buff, tmp,
-					ft_strlen(total_buff), ft_strlen(tmp));
+			total_buff = ft_strjoinn(total_buff, tmp,
+					ft_strlenne(total_buff), ft_strlenne(tmp));
 		}
 	}
 	free(tmp);
@@ -72,9 +71,9 @@ char	*copy_line(char *total_buff)
 	while (total_buff[size] && total_buff[size] != '\n')
 		size++;
 	if (total_buff[size] == '\n')
-		rtrn_buff = ft_substr(total_buff, 0, size + 1);
+		rtrn_buff = ft_substrr(total_buff, 0, size + 1);
 	else
-		rtrn_buff = ft_substr(total_buff, 0, size);
+		rtrn_buff = ft_substrr(total_buff, 0, size);
 	return (rtrn_buff);
 }
 
@@ -89,7 +88,7 @@ char	*cut_static(char *total_buff)
 	if (total_buff[indx] == '\n' && total_buff[indx + 1] != '\0')
 	{
 		indx++;
-		new_buff = ft_substr(total_buff, indx, ft_strlen(total_buff) - indx);
+		new_buff = ft_substrr(total_buff, indx, ft_strlenne(total_buff) - indx);
 	}
 	else
 		new_buff = NULL;

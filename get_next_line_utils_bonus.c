@@ -9,10 +9,9 @@
 /*   Updated: 2022/06/15 11:47:40 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "get_next_line_bonus.h"
 
-char	*ft_strjoin(char *total_buff, char *tmp, size_t totalln, size_t tmpln)
+char	*ft_strjoinn(char *total_buff, char *tmp, size_t totalln, size_t tmpln)
 {
 	char	*str;
 	size_t	indx;
@@ -38,21 +37,21 @@ char	*ft_strjoin(char *total_buff, char *tmp, size_t totalln, size_t tmpln)
 	return (str);
 }
 
-char	*ft_substr(char *total_buff, size_t start, size_t len)
+char	*ft_substrr(char *total_buff, size_t start, size_t len)
 {
 	char	*str;
 	size_t	indx;
 
 	indx = 0;
-	if (ft_strlen(total_buff) < start)
+	if (ft_strlenne(total_buff) < start)
 		str = malloc(sizeof(char) * 1);
-	else if (ft_strlen(total_buff) - start < len)
-		str = malloc(sizeof(char) * (ft_strlen(total_buff) - start + 1));
+	else if (ft_strlenne(total_buff) - start < len)
+		str = malloc(sizeof(char) * (ft_strlenne(total_buff) - start + 1));
 	else
 		str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
-	while (start + indx < ft_strlen(total_buff) && indx < len)
+	while (start + indx < ft_strlenne(total_buff) && indx < len)
 	{
 		str[indx] = total_buff[start + indx];
 		indx++;
@@ -75,7 +74,7 @@ size_t	check_nl(const char *str)
 	return (size);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlenne(const char *s)
 {
 	size_t	size;
 
