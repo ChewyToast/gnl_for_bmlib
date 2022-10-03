@@ -19,6 +19,9 @@
 // LIBRARY FOR MALLOC()
 # include <stdlib.h>
 
+// LIBRARY FOR OPEN_MAX MACROS
+# include <limits.h>
+
 char	*get_next_line(const int fd);
 
 char	*copy_line(char *buff);
