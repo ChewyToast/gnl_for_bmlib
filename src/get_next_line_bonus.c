@@ -34,7 +34,7 @@ char	*get_next_line(const int fd)
 	return (rtrn_buff);
 }
 
-char	*ft_read(const int fd, char *total_buff)
+char	*ft_readd(const int fd, char *total_buff)
 {
 	char	*tmp;
 	ssize_t	chk;

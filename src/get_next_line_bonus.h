@@ -26,7 +26,7 @@ char	*get_next_line(const int fd);
 
 char	*copy_line(char *buff);
 size_t	check_nl(const char *str);
-char	*ft_read(const int fd, char *saved_buff);
+char	*ft_readd(const int fd, char *saved_buff);
 char	*cut_static(char *total_buff);
 
 char	*ft_strjoinn(char *total_buff, char *tmp, size_t totalln, size_t tmpln);

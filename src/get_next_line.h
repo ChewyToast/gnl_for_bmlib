@@ -21,7 +21,7 @@
 
 /*~~~~~~~~~~~~~~~~GET_NEXT_LINE~~~~~~~~~~~~~~~~*/
 char	*get_next_line(int fd);
-char	*fd_read(int fd, char *total_buff);
+char	*fd_readd(int fd, char *total_buff);
 char	*take_line(char *total_buff);
 char	*cut_static(char *total_buff);
 

@@ -32,7 +32,7 @@ char	*get_next_line(int fd)
 	return (rtrn_buff);
 }
 
-char	*fd_read(int fd, char *total_buff)
+char	*fd_readd(int fd, char *total_buff)
 {
 	char	*tmp;
 	int		chk;
