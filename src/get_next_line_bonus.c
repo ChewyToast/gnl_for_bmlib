@@ -19,7 +19,7 @@ char	*get_next_line(const int fd)
 	if (BUFFER_SIZE < 1 || fd < 0)
 		return (NULL);
 	if (!total_buff[fd] || !check_nl(total_buff[fd]))
-		total_buff[fd] = ft_read(fd, total_buff[fd]);
+		total_buff[fd] = ft_readd(fd, total_buff[fd]);
 	if (!total_buff[fd])
 		return (NULL);
 	rtrn_buff = copy_line(total_buff[fd]);

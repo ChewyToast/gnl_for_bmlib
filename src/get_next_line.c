@@ -19,7 +19,7 @@ char	*get_next_line(int fd)
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
 	if (!total_buff || (total_buff && !(check_char(total_buff, '\n'))))
-		total_buff = fd_read(fd, total_buff);
+		total_buff = fd_readd(fd, total_buff);
 	if (!total_buff)
 		return (NULL);
 	rtrn_buff = take_line(total_buff);
